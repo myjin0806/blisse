@@ -1,0 +1,64 @@
+[
+  {
+    "id": 1,
+    "title": "# Makeup Look06",
+    "description": "겉바속촉 건조한 피부를 위한 솔루션",
+    "representativeImage": "/assets/images/lookbook/look06.jpg",
+    "images": [
+      "/assets/images/lookbook/look06-1.jpg",
+      "/assets/images/lookbook/look06-2.jpg",
+      "/assets/images/lookbook/look06-3.jpg"
+    ],
+    "details": "이 룩은 건조한 피부를 위한 최적의 솔루션을 제공합니다."
+  },
+  {
+    "id": 2,
+    "title": "# Makeup Look05",
+    "description": "벨벳립이 잘어울리는 메이크업",
+    "representativeImage": "/assets/images/lookbook/look05.jpg",
+    "images": [
+      "/assets/images/lookbook/look.jpg"
+    ],
+    "details": "이 룩은 건조한 피부를 위한 최적의 솔루션을 제공합니다."
+  },
+  {
+    "id": 3,
+    "title": "# Makeup Look04",
+    "description": "동안 메이크업의 비결",
+    "representativeImage": "/assets/images/lookbook/look04.jpg",
+    "images": [
+      "/assets/images/lookbook/look.jpg"
+    ],
+    "details": "이 룩은 건조한 피부를 위한 최적의 솔루션을 제공합니다."
+  },
+  {
+    "id": 4,
+    "title": "# Makeup Look03",
+    "description": "인스타 여신 분위기 뿜뿜",
+    "representativeImage": "/assets/images/lookbook/look03.jpg",
+    "images": [
+      "/assets/images/lookbook/look.jpg"
+    ],
+    "details": "이 룩은 건조한 피부를 위한 최적의 솔루션을 제공합니다."
+  },
+  {
+    "id": 5,
+    "title": "# Makeup Look02",
+    "description": "깨끗하고 가벼운 느낌의 메이크업",
+    "representativeImage": "/assets/images/lookbook/look02.jpg",
+    "images": [
+      "/assets/images/lookbook/look.jpg"
+    ],
+    "details": "이 룩은 건조한 피부를 위한 최적의 솔루션을 제공합니다."
+  },
+  {
+    "id": 6,
+    "title": "# Makeup Look01",
+    "description": "다가오는 가을을 대비한 메이크업",
+    "representativeImage": "/assets/images/lookbook/look01.jpg",
+    "images": [
+      "/assets/images/lookbook/look.jpg"
+    ],
+    "details": "이 룩은 건조한 피부를 위한 최적의 솔루션을 제공합니다."
+  }
+]

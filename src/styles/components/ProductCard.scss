@@ -1,0 +1,109 @@
+.product-card{
+  transition-duration: .6s;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .product-img{
+    position: relative;
+    overflow: hidden;
+    .hover-img{
+      top: 0;
+      left: 0;
+      position: absolute;
+      transition: .3s;
+      opacity: 0;
+    }
+    .icon-wrap{
+      display: flex;
+      opacity: 0;
+      background-color: rgba(white, 0.7);
+      border: 1px solid #757575;
+      border-bottom: none;
+      position: absolute;
+      bottom: -50px;
+      left: 50%;
+      transform: translateX(-50%);
+      transition: .3s;
+      opacity: 0;
+      div{
+        width: 38px;
+        height: 32px;
+        border-right: 1px solid #757575;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        &:last-child{
+          border-right: none;
+        }
+        svg{
+          font-size: 20px;
+        }
+      }
+    }
+  }
+  .product-desc{
+    margin: 20px 0;
+    h3{
+      font-size: 16px;
+      color: #333;
+      margin-bottom: 10px;
+    }
+    p{
+      font-size: 13px;
+      color: #999;
+    }
+    h4{
+      font-size: 16px;
+      color: #333;
+      margin: 6px;
+      span{
+        display: block;
+        font-size: 14px;
+        color: #999;
+        text-decoration: line-through;
+      }
+    }
+    .colors{
+      display: flex;
+      gap: 4px;
+      margin-bottom: 8px;
+      li{
+        cursor: pointer;
+        position: relative;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        border: 1px solid #d7d7d7;
+        span{
+          position: absolute;
+          display: block;
+          width: 14px;
+          height: 14px;
+          left: 50%;
+          top: 50%;
+          border-radius: 50%;
+          transform: translate(-50%, -50%);
+        }
+      }
+    }
+    .product-icon{
+      display: flex;
+      img{
+        margin: 2px 4px 2px 0;
+      }
+    }
+  }
+  &:hover{
+    .hover-img{
+      opacity: 1;
+    }
+    .icon-wrap{
+      opacity: 1;
+      bottom: 0;
+    }
+  }
+}

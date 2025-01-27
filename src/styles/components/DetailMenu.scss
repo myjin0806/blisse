@@ -1,0 +1,43 @@
+.detail-menu{
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 40px 0;
+  margin: 20px 0;
+  li{
+    margin-right: 20px;
+    &.active{
+      button{
+        color: #333;
+        font-weight: 600;
+      }
+    }
+    button{
+      position: relative;
+      background: none;
+      border: none;
+      font-size: 13px;
+      color: #999;
+      padding-right: 20px;
+      line-height: 22px;
+      cursor: pointer;
+      &::after{
+        position: absolute;
+        content: '';
+        width: 1px;
+        height: 40%;
+        background-color: #999;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    }
+    &:last-child{
+      button{
+        &::after{
+          display: none;
+        }
+      }
+    }
+  }
+}

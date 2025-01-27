@@ -1,0 +1,312 @@
+/* Header 전체 스타일 */
+.header{
+  position: absolute;
+  z-index: 1000;
+  top: 0;
+  .header-inner{
+    width: 100%;
+    height: 72.2px;
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    padding: 30px 30px 0;
+    margin: 0 auto;
+    line-height: 40px;
+    transition: all 0.5s;
+    &:hover{
+      background: rgba(255, 255, 255, 0.5);
+      backdrop-filter: blur(3px);
+    }
+  }
+  /* 왼쪽 네비게이션 */
+  .left-nav{
+    display: flex;
+  }
+  /* 로고 스타일 */
+  .header-logo{
+    position: absolute;
+    left: 20px;
+    img{
+      width: 157px;
+    }
+  }
+  /* 오른쪽 네비게이션 */
+  .right-nav{
+    display: flex;
+  }
+  /* 텍스트 아이콘 (로그인, 회원가입 등) */
+  .text-icon{
+    a{
+      font-size: 14px;
+      font-weight: 600;
+      color: #222;
+      padding: 0 10px;
+      margin-top: 3px;
+      &:hover{
+        color: #999;
+      }
+    }
+  }
+  /* 포인트 스타일 */
+  .point{
+    position: absolute;
+    top: 66px;
+    right: 256px;
+    display: inline-block;
+    animation: moveSideways 0.5s infinite alternate;
+    em{
+      position: relative;
+      display: block;
+      width: 45px;
+      height: 17px;
+      background-color: #333;
+      border-radius: 3px;
+      font-size: 10px;
+      color: #fff;
+      text-align: center;
+      line-height: 17px;
+      &::before{
+        content: '';
+        position: absolute;
+        left: 18px;
+        top: -8px;
+        border: 4px solid transparent;
+        border-bottom: 4px solid #333;
+      }
+    }
+  }
+  @keyframes moveSideways{
+    0%{
+      transform: translateX(-1px);
+    }
+    100%{
+      transform: translateX(1px);
+    }
+  }
+  /* 네비게이션 아이콘 (지구본, 검색, 햄버거 메뉴) */
+  .nav-icons{
+    margin-left: 10px;
+    svg{
+      font-size: 18px;
+    }
+    button{
+      border: transparent;
+      background: transparent;
+      cursor: pointer;
+    }
+  }
+  /* 검색 모달 스타일 */
+  .search-modal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 350px;
+    background-color: #ffffffb3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    h2{
+      font-size: 24px;
+      font-weight: bold;
+    }
+    p{
+      margin-top: 10px;
+    }
+    .search-input{
+      margin-top: 20px;
+      padding: 10px;
+      width: 100%;
+      max-width: 500px;
+      border: none;
+      background-color: #fff;
+    }
+    .close-btn{
+      position: absolute;
+      top: 30px;
+      right: 27.5px;
+      background-color: transparent;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+    }
+  }
+  /* 검색창 컨테이너 */
+  .search-input-container{
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    max-width: 300px;
+    .input-icon{
+      position: absolute;
+      top: 67%;
+      right: 10px;
+      transform: translateY(-50%);
+      font-size: 18px;
+      color: #999;
+      cursor: pointer;
+    }
+  }
+  /* 인기 검색어 */
+  .popular-search{
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: 500;
+    span{
+      margin-right: 10px;
+      font-size: 16px;
+      color: #555;
+      text-align: left;
+      cursor: pointer;
+      &:nth-child(1){
+        margin-left: 20px;
+      }
+      &:hover{
+        color: #000;
+      }
+    }
+  }
+  /* 언어 선택 스타일 */
+  .language{
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.7s ease-in-out;
+    h2:hover{
+      color: #ff5686;
+      transform: scale(1.2);
+    }
+  }
+  /* 네비게이션 카테고리 */
+  .nav-category{
+    font-size: 15px;
+    font-weight: 600;
+    color: #222;
+  }
+  /* 메인 메뉴 스타일 */
+  .main-menu{
+    display: flex;
+    position: absolute;
+    top: 42px;
+    left: 192px;
+    z-index: 1000;
+    > li{
+      position: relative;
+      margin-top: -10px;
+      > a{
+        padding: 5px 20px;
+        font-size: 15px;
+        font-weight: 600;
+        color: #222;
+        &::after{
+          content: '';
+          position: absolute;
+          top: 5px;
+          right: 12px;
+          display: block;
+          background-color: #000;
+          border-radius: 50%;
+          opacity: 0;
+          transition: all 0.5s;
+        }
+        &:hover::after{
+          opacity: 1;
+          width: 4px;
+          height: 4px;
+        }
+      }
+      // 수정
+      > span{
+        font-size: 15px;
+        padding-left: 15px;
+        font-weight: 600;
+        color: #222;
+        cursor: pointer;
+      }
+      .sub-menu{
+        position: absolute;
+        top: calc(100vh - var(--header-height));
+        left: 0;
+        width: 100vw;
+        text-align: center;
+        display: none;
+        padding: 10px;
+        white-space: nowrap;
+        font-size: 13px;
+        transition: all 0.5s;
+        > li{
+          margin-right: 5px;
+          &:last-child{
+            margin-right: 0;
+          }
+          > a{
+            font-size: 14px;
+            padding: 5px;
+            padding-left: 15px;
+            &:hover{
+              color: #ff5686;
+            }
+          }
+        }
+      }
+      &:hover .sub-menu{
+        display: flex;
+        flex-direction: row;
+      }
+    }
+  }
+
+  /* 모달 메뉴 스타일 */
+  .modal-menu{
+    display: flex;
+    flex-direction: column;
+    > li{
+      position: relative;
+      text-align: right;
+      > a{
+        padding: 5px 20px;
+        font-size: 30px;
+        font-weight: 600;
+        color: #222;
+        &::after{
+          content: '';
+          position: absolute;
+          top: 3px;
+          right: 11px;
+          display: block;
+          background-color: #000;
+          border-radius: 50%;
+          opacity: 0;
+          transition: all 0.5s;
+        }
+        &:hover::after{
+          opacity: 1;
+          width: 6px;
+          height: 6px;
+        }
+      }
+      .modal-sub-menu{
+        width: 100%;
+        display: none;
+        position: absolute;
+        top: 0;
+        left: calc(100%);
+        text-align: left;
+        > li{
+          line-height: 26px;
+          > a{
+            font-size: 14px;
+            color: #555;
+            &:hover{
+              color: #999;
+            }
+          }
+        }
+        &:hover{
+          display: block;
+        }
+      }
+    }
+  }
+}

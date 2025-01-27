@@ -1,0 +1,113 @@
+.swiper {
+  .swiper-wrapper {
+    .swiper-slide {
+      .swiper-wrap {
+        position: relative;
+        height: 100vh;
+        img {
+          width: 100%;
+          height: calc(100vh - var(--header-height));
+          object-fit: cover;
+        }
+        .text-container {
+          position: absolute;
+          top: 40%;
+          left: 12.5%;
+          transform: translate(0, -50%);
+          color: #000;
+          text-align: left;
+          transition: all 0.7s;
+          p {
+            display: block;
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 15px;
+            color: #333;
+          }
+          h1 {
+            font-size: 34px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            line-height: 1.4;
+          }
+          .more {
+            display: flex;
+            align-items: center;
+            font-size: 18px;
+            font-weight: 700;
+            color: #000;
+            line-height: 1.4;
+            .visual-more {
+              display: inline-block;
+              padding: 8px;
+              margin-left: 15px;
+              border: 2px solid #666;
+              border-radius: 100%;
+              font-size: 14px;
+              border-color: #000;
+              transition: all 0.5s;
+            }
+            &:hover {
+              .visual-more {
+                background-color: #000;
+                color: #ffffff;
+              }
+            }
+          }
+        }
+      }
+      &.slide-4 {
+        .text-container {
+          position: absolute;
+          color: #fff;
+          p {
+            color: #fff;
+          }
+          h1 {
+            color: #fff;
+          }
+          .more {
+            color: #fff;
+            .visual-more {
+              color: #fff;
+              border-color: #fff;
+              transition: all 0.5s;
+            }
+            &:hover {
+              .visual-more {
+                background-color: #fff;
+                color: black;
+              }
+            }
+          }
+        }
+      }
+
+      // 활성화된 슬라이드 애니메이션
+      &.swiper-slide-active {
+        .text-container {
+          animation: slideDown 0.7s ease-out forwards;
+        }
+      }
+    }
+  }
+
+  // 페이지네이션 스타일
+  .swiper-pagination {
+    .swiper-pagination-bullet-active {
+      background-color: white;
+    }
+  }
+}
+
+// 키프레임 애니메이션
+@keyframes slideDown {
+  0% {
+    transform: translate(0, -10px);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+}

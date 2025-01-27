@@ -1,0 +1,113 @@
+.best-new-wrap{
+  .best-new-products{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 20px;
+    margin-bottom: 20px;
+    .best-new-product{
+      position: relative;
+      overflow: hidden;
+      .best-new-img{
+        position: relative;
+        .img{
+          
+        }
+        .hover-img{
+          position: absolute;
+          top: 0;
+          opacity: 0;
+          transition: .3s;
+        }
+        .bedge{
+          position: absolute;
+          right: 15px;
+          top: 15px;
+          background: rgba(255, 255, 255, 0.35);
+          color: #333;
+          font-weight: 700;
+          font-size: 10px;
+          text-transform: uppercase;
+          padding: 7px 10px;
+          border-radius: 20px;
+          transition: all 0.5s;
+        }
+      }
+      .best-new-desc{
+        margin: 0;
+        position: absolute;
+        bottom: -100px;
+        left: 0;
+        width: 100%;
+        padding: 25px;
+        box-sizing: border-box;
+        background: rgba(255, 255, 255, 0.7);
+        z-index: 2;
+        opacity: 0;
+        transition: all 0.7s;
+        h3{
+          font-size: 16px;
+          color: #333;
+          margin-bottom: 10px;
+        }
+        p{
+          font-size: 13px;
+          color: #999;
+        }
+        h4{
+          font-size: 16px;
+          color: #333;
+          margin: 6px;
+          span{
+            display: block;
+            font-size: 14px;
+            color: #999;
+            text-decoration: line-through;
+          }
+        }
+        .colors{
+          display: flex;
+          gap: 4px;
+          margin-bottom: 8px;
+          li{
+            cursor: pointer;
+            position: relative;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 1px solid #d7d7d7;
+            span{
+              position: absolute;
+              display: block;
+              width: 14px;
+              height: 14px;
+              left: 50%;
+              top: 50%;
+              border-radius: 50%;
+              transform: translate(-50%, -50%);
+            }
+          }
+        }
+        .product-icon{
+          display: flex;
+          img{
+            margin: 2px 4px 2px 0;
+          }
+        }
+      }
+      &:hover{
+        .best-new-img{
+          .hover-img{
+            opacity: 1;
+          }
+          .bedge{
+            opacity: 0;
+          }
+        }
+        .best-new-desc{
+          bottom: 0;
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
