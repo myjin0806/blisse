@@ -19,30 +19,30 @@ const EyesPage = () => {
     ? eyesProducts.filter((product) => product.subCategory === selectedSubCategory)
     : eyesProducts;
 
-  // 정렬 로직
-  useEffect(() => {
-    let sorted = [...eyesProducts]; // 직접 eyesProducts를 사용
-    if (selectedSubCategory) {
-      sorted = sorted.filter((product) => product.subCategory === selectedSubCategory);
-    }
-    switch (sortOrder) {
-      case 'new':
-        sorted.sort((a, b) => new Date(b.date) - new Date(a.date));
-        break;
-      case 'name':
-        sorted.sort((a, b) => a.name.localeCompare(b.name));
-        break;
-      case 'lowPrice':
-        sorted.sort((a, b) => a.price - b.price);
-        break;
-      case 'highPrice':
-        sorted.sort((a, b) => b.price - a.price);
-        break;
-      default:
-        break;
-    }
-    setSortedProducts(sorted); // 상태 업데이트
-  }, [sortOrder, selectedSubCategory]); 
+    useEffect(() => {
+      let sorted = [...eyesProducts]; // 직접 eyesProducts를 사용
+      if (selectedSubCategory) {
+        sorted = sorted.filter((product) => product.subCategory === selectedSubCategory);
+      }
+      switch (sortOrder) {
+        case 'new':
+          sorted.sort((a, b) => new Date(b.date) - new Date(a.date));
+          break;
+        case 'name':
+          sorted.sort((a, b) => a.name.localeCompare(b.name));
+          break;
+        case 'lowPrice':
+          sorted.sort((a, b) => a.price - b.price);
+          break;
+        case 'highPrice':
+          sorted.sort((a, b) => b.price - a.price);
+          break;
+        default:
+          break;
+      }
+      setSortedProducts(sorted); // 상태 업데이트
+    }, [sortOrder, selectedSubCategory, eyesProducts]); // eyesProducts 포함
+    
   /* 페이지네이션 */
   const itemsPerPage = 12;
   const indexOfLastStores = currentStoresPage * itemsPerPage;
