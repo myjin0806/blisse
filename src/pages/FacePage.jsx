@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useMemo } from 'react';
 
 import products from '../data/products.json';
 import ProductCard from '../components/ProductCard';
@@ -7,24 +7,24 @@ import Pagination from '../components/Pagination.jsx';
 
 const FacePage = () => {
   const [sortOrder, setSortOrder] = useState('new'); // 초기 정렬 기준: 신상품
-  const [sortedProducts, setSortedProducts] = useState([]);
   const [selectedSubCategory, setSelectedSubCategory] = useState(''); // 선택된 subCategory
   const [currentStoresPage, setCurrentStoresPage] = useState(1); // 페이지네이션
 
-  // eyes 제품 필터링
-  const faceProducts = products.filter((product) => product.category === 'face');
+  // face 제품 필터링
+  const faceProducts = useMemo(() => {
+    return products.filter((product) => product.category === 'face');
+  }, []);
 
   // subCategory에 따른 필터링
-  const filteredProducts = selectedSubCategory
-    ? faceProducts.filter((product) => product.subCategory === selectedSubCategory)
-    : faceProducts;
+  const filteredProducts = useMemo(() => {
+    return selectedSubCategory
+      ? faceProducts.filter((product) => product.subCategory === selectedSubCategory)
+      : faceProducts;
+  }, [selectedSubCategory, faceProducts]);
 
   // 정렬 로직
-  useEffect(() => {
-    let sorted = [...faceProducts]; // 직접 faceProducts를 사용
-    if (selectedSubCategory) {
-      sorted = sorted.filter((product) => product.subCategory === selectedSubCategory);
-    }
+  const sortedProducts = useMemo(() => {
+    let sorted = [...filteredProducts]; // 필터링된 상품 리스트 복사
     switch (sortOrder) {
       case 'new':
         sorted.sort((a, b) => new Date(b.date) - new Date(a.date));
@@ -41,8 +41,9 @@ const FacePage = () => {
       default:
         break;
     }
-    setSortedProducts(sorted); // 상태 업데이트
-  }, [sortOrder, selectedSubCategory]); 
+    return sorted;
+  }, [sortOrder, filteredProducts]);
+
   /* 페이지네이션 */
   const itemsPerPage = 12;
   const indexOfLastStores = currentStoresPage * itemsPerPage;
@@ -51,7 +52,7 @@ const FacePage = () => {
   const totalStoresPages = Math.ceil(sortedProducts.length / itemsPerPage);
 
   return (
-    <div className='lips-page products-page'>
+    <div className="lips-page products-page">
       {/* 상품 타이틀 */}
       <div className="products-title">
         <h2>페이스</h2>
@@ -80,12 +81,6 @@ const FacePage = () => {
           >
             기타
           </li>
-          {/* <li
-            onClick={() => setSelectedSubCategory('')} // 전체 보기
-            className={selectedSubCategory === '' ? 'active' : ''}
-          >
-            전체
-          </li> */}
         </ul>
       </div>
       {/* 인기, 신상품 */}
@@ -122,7 +117,7 @@ const FacePage = () => {
         onPageChange={(page) => setCurrentStoresPage(page)}
       />
     </div>
-  )
-}
+  );
+};
 
-export default FacePage
+export default FacePage;

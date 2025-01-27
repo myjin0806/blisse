@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import '../styles/pages/EyesPage.scss';
 import products from '../data/products.json';
 import ProductCard from '../components/ProductCard';
@@ -7,42 +7,43 @@ import Pagination from '../components/Pagination.jsx';
 
 const EyesPage = () => {
   const [sortOrder, setSortOrder] = useState('new'); // 초기 정렬 기준: 신상품
-  const [sortedProducts, setSortedProducts] = useState([]);
   const [selectedSubCategory, setSelectedSubCategory] = useState(''); // 선택된 subCategory
   const [currentStoresPage, setCurrentStoresPage] = useState(1); // 페이지네이션
 
   // eyes 제품 필터링
-  const eyesProducts = products.filter((product) => product.category === 'eyes');
+  const eyesProducts = useMemo(() => {
+    return products.filter((product) => product.category === 'eyes');
+  }, []);
 
   // subCategory에 따른 필터링
-  const filteredProducts = selectedSubCategory
-    ? eyesProducts.filter((product) => product.subCategory === selectedSubCategory)
-    : eyesProducts;
+  const filteredProducts = useMemo(() => {
+    return selectedSubCategory
+      ? eyesProducts.filter((product) => product.subCategory === selectedSubCategory)
+      : eyesProducts;
+  }, [selectedSubCategory, eyesProducts]);
 
-    useEffect(() => {
-      let sorted = [...eyesProducts]; // 직접 eyesProducts를 사용
-      if (selectedSubCategory) {
-        sorted = sorted.filter((product) => product.subCategory === selectedSubCategory);
-      }
-      switch (sortOrder) {
-        case 'new':
-          sorted.sort((a, b) => new Date(b.date) - new Date(a.date));
-          break;
-        case 'name':
-          sorted.sort((a, b) => a.name.localeCompare(b.name));
-          break;
-        case 'lowPrice':
-          sorted.sort((a, b) => a.price - b.price);
-          break;
-        case 'highPrice':
-          sorted.sort((a, b) => b.price - a.price);
-          break;
-        default:
-          break;
-      }
-      setSortedProducts(sorted); // 상태 업데이트
-    }, [sortOrder, selectedSubCategory, eyesProducts]); // eyesProducts 포함
-    
+  // 정렬 로직
+  const sortedProducts = useMemo(() => {
+    let sorted = [...filteredProducts]; // 필터링된 상품 리스트 복사
+    switch (sortOrder) {
+      case 'new':
+        sorted.sort((a, b) => new Date(b.date) - new Date(a.date));
+        break;
+      case 'name':
+        sorted.sort((a, b) => a.name.localeCompare(b.name));
+        break;
+      case 'lowPrice':
+        sorted.sort((a, b) => a.price - b.price);
+        break;
+      case 'highPrice':
+        sorted.sort((a, b) => b.price - a.price);
+        break;
+      default:
+        break;
+    }
+    return sorted;
+  }, [sortOrder, filteredProducts]);
+
   /* 페이지네이션 */
   const itemsPerPage = 12;
   const indexOfLastStores = currentStoresPage * itemsPerPage;
@@ -74,12 +75,6 @@ const EyesPage = () => {
           >
             아이라이너
           </li>
-          {/* <li
-            onClick={() => setSelectedSubCategory('')} // 전체 보기
-            className={selectedSubCategory === '' ? 'active' : ''}
-          >
-            전체
-          </li> */}
         </ul>
       </div>
       {/* 인기, 신상품 */}
